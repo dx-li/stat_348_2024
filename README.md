@@ -20,6 +20,7 @@ The University of Chicago
 ## Assignments
 - [Assignment 1: Supervised learning](https://github.com/aschein/stat_348_2024/blob/main/assignments/hw1.ipynb). Due **Saturday March 30 at 11:59pm** on GradeScope. 
 - [Assignment 2: Priors, regularization, shrinkage](https://github.com/aschein/stat_348_2024/blob/main/assignments/hw2.ipynb). Due **Saturday April 6 at 11:59pm** on GradeScope. 
+- [Assignment 3: Exponential families, conjugacy, entropy](https://github.com/aschein/stat_348_2024/blob/main/assignments/hw3.pdf). Due **Monday April 15 at 11:59pm** on GradeScope. 
 
 ## Schedule
 
@@ -78,4 +79,11 @@ from an Elementary Point of View](https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/A
 	- Kirsch (2004) ["On Bayesian Model Selection: The Marginal Likelihood, Cross-Validation, and Conditional Log Marginal Likelihood"](https://d2jud02ci9yv69.cloudfront.net/2024-05-07-clml-111/blog/clml/)
 	- Fong & Holmes (2020) ["On the marginal likelihood and cross-validation"](https://academic.oup.com/biomet/article/107/2/489/5715611)
 	- Gleick (2011) [_The Information_](https://jarrettfuller.com/tech/downloads/The-Information.pdf)
+- Lecture materials: 
+    - [iPad notes](https://github.com/aschein/stat_348_2024/blob/main/lecture_materials/ipad_notes/lecture_6_ipad.pdf)
+    
+### Lecture 7 (April 9): Probabilistic graphical models (PGMs)
+- Reading / resources:
+	- Chap 2 of Michael Jordan's [lecture notes](https://people.cs.pitt.edu/~milos/courses/cs3750-Spring2020/Readings/Graphical_models/chapter2.pdf)
+	- David Blei's [lecture notes](https://www.cs.columbia.edu/~blei/fogm/2016F/doc/graphical-models.pdf) on basics of PGMs
 
