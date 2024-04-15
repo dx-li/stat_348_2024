@@ -1,0 +1,146 @@
+% to change the appearance of the header, questions, problems or subproblems, see the homework.cls file or
+% override the \Problem, \Subproblem, \question or \printtitle commands.
+
+% The hidequestions option hides the questions. Remove it to print the questions in the text.
+\documentclass[hidequestions]{homework}
+\usepackage{stat-macros}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{breqn}
+\usepackage[shortlabels]{enumitem}
+\usepackage{pdfpages}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=red]{hyperref}
+
+% Set up your name, the course name and the homework set number.
+\homeworksetup{
+    username={Daniel Li},
+    course={STAT 301},
+    setnumber=7}
+\begin{document}% this also prints the header.
+%\includepdf[pages=-]{Q1.pdf}
+% use starred problems or subproblems to apply manual numbering.
+\problem
+\subproblem 
+\begin{align*}
+    \int f(\frac{p}{q})q \geq f(\int \frac{p}{q}q) = f(1) = 0
+\end{align*}
+\subproblem
+Hellinger-squared $f(x) = (\sqrt{x} - 1)^2$ \\
+Total variation $f(x) = \frac{1}{2}\abs{x-1}$\\
+Kullback-Leilber $f(x) = x\log(x)$\\
+Reverse Kullback-Leilber $f(x) = -\log(x)$\\
+$\chi^2$-divergence $f(x) = (x-1)^2$\\
+\subproblem 
+\begin{align*}
+    D(N(\theta,I_p) \vert\vert N(\mu, I_p)) &=\int \log(p) - \log(q) dQ\\
+    &= \frac{1}{2}\int \left[-(x-\theta)\tran(x-\theta) + (x-\mu)\tran(x-\mu)\right] dQ\\
+    &= \frac{1}{2}\int \left[-\tr((x-\theta)\tran(x-\theta)) + \tr((x-\mu)\tran(x-\mu))\right] dQ\\
+    &= \frac{1}{2} \EE_{Q} \left[-\tr((x-\theta)\tran(x-\theta)) + \tr((x-\mu)\tran(x-\mu))\right]\\
+    &= \frac{1}{2}  \left[-\tr(\EE_{Q}(x-\theta)\tran(x-\theta)) + \tr(\EE_{Q}(x-\mu)\tran(x-\mu))\right]\\
+    &= -\frac{1}{2}  \left[(\mu-\theta)\tran(\mu-\theta) + p \right]\\
+\end{align*}
+\problem 
+\subproblem 
+\begin{align*}
+    \frac{1}{2}\int(\sqrt{p}-\sqrt{q})^2 = \frac{1}{2}\int p - 2\sqrt{pq} + q = \frac{1}{2} - \int \sqrt{pq} + \frac{1}{2} = 1 - \int \sqrt{pq}
+\end{align*}
+\subproblem 
+\begin{align*}
+    -2\log \int p^{.5}q^{.5} = -2 \log (1-H^2(P,Q)) \geq H^2(P,Q)
+\end{align*}
+since $\log(x) \leq x-1$ for $x \geq 0$.
+\subproblem
+\begin{align*}
+    \int \sqrt{p,q} \geq \int \sqrt{\min(p,q)^2} = \int \min(p,q)\\
+    \implies 1 - \int \sqrt{pq} \leq 1 - \int \min(p,q) = \text{TV}(P,Q)
+\end{align*}
+\subproblem
+\begin{align*}
+    \text{TV}(P,Q) = \frac{1}{2} \int \abs{p-q} = \frac{1}{2} \int \abs{\sqrt{p}-\sqrt{q}}\abs{\sqrt{p}+\sqrt{q}} &\leq \frac{1}{2} \sqrt{\int (\sqrt{p}-\sqrt{q})^2 \int (\sqrt{p}+\sqrt{q})^2}\\
+    &=\frac{1}{2}H(P,Q)\sqrt{2 + (1-H^2(P,Q))}\\
+    &\leq \sqrt{2} H(P,Q)
+\end{align*}
+\subproblem 
+\begin{align*}
+    H^2(P^n,Q^n) = \frac{1}{2}\int(\sqrt{p^n}-\sqrt{q^n})^2 = \frac{1}{2}\int p^n - 2\sqrt{p^nq^n} + q^n &= 1 - \int \sqrt{p^nq^n}\\
+    &= 1-(1-H^2(P,Q))^n
+\end{align*}
+because we can factor the densities.
+\problem 
+\subproblem 
+\begin{align*}
+    D_{1/2}(P,Q) = -2\log \int p^{.5}q^{.5} = -2 \log \int (q/p)^{.5} dP \leq \int p\log(p/q) = D(P\vert\vert Q)
+\end{align*}
+\subproblem
+\begin{align*}
+    D(P\vert\vert Q) = \int p\log(p/q) \leq \log \int p^2 q^{-1} =D_2(P,Q)
+\end{align*}
+\subproblem 
+\begin{align*}
+    D_2(P,Q) =\log \int p^2 q^{-1} = \log(1 + \chi^2(P,Q)) \leq \chi^2(P,Q)
+\end{align*}
+\problem 
+\begin{align*}
+    \sup_{\theta\in\Theta}\abs{\frac{1}{n}\sum_{i=1}^{n}\log p_\theta(X_i)-\int p_{\theta^\star}\log p_\theta} \leq \sum_{k=1}^{K}\abs{\frac{1}{n}\sum_{i=1}^{n}\log p_{\theta_k}(X_i)-\int p_{\theta^\star}\log p_{\theta_k}} \rightarrow_{p_{\theta^\star}^n} 0
+\end{align*}
+because we can apply LLN for each point in $\Theta$
+\problem 
+\problem 
+\subproblem
+\begin{align*}
+    M_n(\theta^\star + t) &= M(\theta^\star + t) + \frac{1}{\sqrt{n}}\nu_n m(x, \theta^\star + t)\\
+    &= M(\theta^\star) - \frac{1}{2}J_{\theta^\star}t^2 + o(t^2) + \frac{1}{\sqrt{n}}\nu_n\left[m(x,\theta^\star) + t\Delta_{\theta^\star}(x) + \abs{t}r(x,t)\right]\\
+    &= M_n(\theta^\star) + \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) - \frac{t^2}{2}J_{\theta^\star} + \frac{\abs{t}}{\sqrt{n}}\nu_n r(x,t) + o(t^2)
+\end{align*}
+\subproblem
+Let $t = \hat{\theta} - \theta^\star$
+\begin{align*}
+    M_n(\theta^\star + t) \geq M_n(\theta^\star)\\
+    M_n(\theta^\star) + \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) - \frac{t^2}{2}J_{\theta^\star} + \frac{\abs{t}}{\sqrt{n}}\nu_n r(x,t) + o(t^2) \geq M_n(\theta^\star)
+\end{align*}
+\begin{align*}
+    \frac{t^2}{2}J_{\theta^\star} - o(t^2) &\leq \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) + \frac{\abs{t}}{\sqrt{n}}\nu_n r(x,t)\\
+    &\leq O_p(\frac{\abs{t}}{\sqrt{n}}) + \frac{\abs{t}}{\sqrt{n}}o_p(1+\sqrt{n}\abs{t})
+\end{align*}
+\begin{align*}
+    \frac{t^2}{2}J_{\theta^\star} - o_p(t^2) = O_p(\frac{\abs{t}}{\sqrt{n}})\\
+    (\frac{1}{2}J_{\theta^\star} - o_p(1))t^2 = O_p(\frac{\abs{t}}{\sqrt{n}})\\
+    (\frac{1}{2}J_{\theta^\star} - o_p(1))\abs{t} = O_p(\frac{1}{\sqrt{n}})\\
+    \abs{\hat{\theta} - \theta^\star} = O_p(\frac{1}{\sqrt{n}})
+\end{align*}
+\subproblem
+Let $t = \hat{\theta} - \theta^\star = O_p(\frac{1}{\sqrt{n}})$
+\begin{align*}
+    M_n(\theta^\star + t) &= M_n(\theta^\star) + \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) - \frac{t^2}{2}J_{\theta^\star} + o_p(\frac{1}{n})\\
+    &= M_n(\theta^\star)  - \frac{1}{2}J_{\theta^\star}(t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})^2 + \frac{1}{2n}\frac{(\nu_n\Delta_{\theta^\star}(x))^2}{J_{\theta^\star}} + o_p(\frac{1}{n})
+\end{align*}
+\begin{align*}
+    M_n(\theta^\star + t) \geq M_n(\theta^\star + \frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})\\
+    M_n(\theta^\star)  - \frac{1}{2}J_{\theta^\star}(t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})^2 + \frac{1}{2n}\frac{(\nu_n\Delta_{\theta^\star}(x))^2}{J_{\theta^\star}} + o_p(\frac{1}{n}) \geq M_n(\theta^\star) + \frac{1}{2n}\frac{(\nu_n\Delta_{\theta^\star}(x))^2}{J_{\theta^\star}} + o_p(\frac{1}{n})\\
+    \frac{1}{2}J_{\theta^\star}(t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})^2 = o_p(\frac{1}{n})\\
+    \abs{t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}}} = o_p(\frac{1}{\sqrt{n}})\\
+    \abs{\sqrt{n}t-\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}}} = o_p(1)\\
+    \sqrt{n}(\hat{\theta} - \theta^\star) = \frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}} + o_p(1)\\
+    \rightsquigarrow N(0, \frac{E_{\theta^\star}\Delta_{\theta^\star}(x)^2}{J_{\theta^\star}^2})
+\end{align*}
+\subproblem
+\begin{align*}
+    \frac{E_{\theta^\star}\Delta_{\theta^\star}(x)^2}{J_{\theta^\star}^2} I_{\theta^\star} =
+    E_{\theta^\star}  \frac{\Delta_{\theta^\star}(x)^2}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}^2} E_{\theta^\star} S_{\theta^\star}^2 \\
+    \geq (\int \frac{\Delta_{\theta^\star}(x)}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}}S_{\theta^\star} dP)^2\\
+    =(\int \frac{\Delta_{\theta^\star}(x)}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}} \frac{\partial}{\partial \theta}\log p_\theta dP)^2\\
+    =(\int \frac{\Delta_{\theta^\star}(x)}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}} \frac{\partial}{\partial \theta} p_\theta )^2\\
+    =1
+\end{align*}
+\problem 
+\begin{align*}
+    F_{X_{(n)}}(x) = \prod_{i=1}^{n}F_X(x) = F_X(x)^n = (\frac{x}{\theta})^n\\
+    f_{X_{(n)}}(x) = \frac{d}{dx}F_{X_{(n)}}(x) = \frac{n}{\theta}(\frac{x}{\theta})^{n-1}\\
+    M \defeq n(X_{(n)}-\theta)\\
+    f_M(m) = \frac{(\frac{m}{n}+\theta)^{n-1}}{\theta^n} = \frac{1}{\theta}(\frac{m}{n\theta}+1)^{n-1}\\
+    \lim_{n\rightarrow\infty}f_M(m) = \frac{1}{\theta}e^{\frac{m}{\theta}}
+\end{align*}
+which is exponential distribution as $m < 0$.
+
+\end{document}
