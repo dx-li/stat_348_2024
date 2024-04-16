@@ -23,124 +23,120 @@
 \problem
 \subproblem 
 \begin{align*}
-    \int f(\frac{p}{q})q \geq f(\int \frac{p}{q}q) = f(1) = 0
+    \mu\exp(-\mu x) = \exp(-\mu x + \log(\mu))\\
+    h(x) = 1\\
+    t(x) = x\\
+    \eta = -\mu\\
+    a(\eta) = -\log(-\eta)\\
+\end{align*}
+\begin{align*}
+    \frac{b^a}{\Gamma(a)}x^{a-1}\exp(-bx) &= \exp(a\log(b) + (a-1)\log(x) - bx - \log(\Gamma(a)))\\
+    h(x) = 1\\
+    t(x) = \begin{bmatrix}
+        \log(x)\\
+        x
+    \end{bmatrix}\\
+    \eta = \begin{bmatrix}
+        a-1\\
+        -b
+    \end{bmatrix}\\
+    a(\eta) =  \log(\Gamma(\eta_1 + 1)) - (\eta_1 + 1)\log(-\eta_2)
 \end{align*}
 \subproblem
-Hellinger-squared $f(x) = (\sqrt{x} - 1)^2$ \\
-Total variation $f(x) = \frac{1}{2}\abs{x-1}$\\
-Kullback-Leilber $f(x) = x\log(x)$\\
-Reverse Kullback-Leilber $f(x) = -\log(x)$\\
-$\chi^2$-divergence $f(x) = (x-1)^2$\\
+\begin{align*}
+    P(\mu \g a,b) = \exp(a\log(b) + (a-1)\log(\mu) - b\mu - \log(\Gamma(a))) = \exp(- b\mu + (a-1)\log(\mu) + a\log(b) - \log(\Gamma(a)))
+\end{align*}
+and note that multiplying by $P(x \g \mu)$ preserves the form as only the $\mu$ terms are affected. Thus, the posterior is also a gamma distribution with parameters $a' = a + n$ and $b' = b + \sum_{i=1}^n x_i$.
 \subproblem 
 \begin{align*}
-    D(N(\theta,I_p) \vert\vert N(\mu, I_p)) &=\int \log(p) - \log(q) dQ\\
-    &= \frac{1}{2}\int \left[-(x-\theta)\tran(x-\theta) + (x-\mu)\tran(x-\mu)\right] dQ\\
-    &= \frac{1}{2}\int \left[-\tr((x-\theta)\tran(x-\theta)) + \tr((x-\mu)\tran(x-\mu))\right] dQ\\
-    &= \frac{1}{2} \EE_{Q} \left[-\tr((x-\theta)\tran(x-\theta)) + \tr((x-\mu)\tran(x-\mu))\right]\\
-    &= \frac{1}{2}  \left[-\tr(\EE_{Q}(x-\theta)\tran(x-\theta)) + \tr(\EE_{Q}(x-\mu)\tran(x-\mu))\right]\\
-    &= -\frac{1}{2}  \left[(\mu-\theta)\tran(\mu-\theta) + p \right]\\
+    P(\mu \g x_{1:n}, a, b) \propto \exp(- b\mu + (a-1)\log(\mu) + a\log(b) - \log(\Gamma(a)))\prod_{i=1}^n \exp(-\mu x_i + \log(\mu))\\
+    \propto \exp(-\mu (b + \sum_{i=1}^n x_i) + (a + n - 1)\log(\mu) + (a\log(b) - \log(\Gamma(a))))\\
+    P(\mu \g x_{1:n}, a, b) = \exp(-\mu (b + \sum_{i=1}^n x_i) + (a + n - 1)\log(\mu) + ((a+n)\log(b+ \sum_{i=1}^n x_i) - \log(\Gamma(a+n))))\\
+\end{align*}
+\subproblem 
+\begin{align*}
+    P(x_1 \g a,b) = \int P(x_1 \g \mu)P(\mu \g a,b)d\mu\\
+     = \int \exp(-\mu x_1 + \log(\mu))\exp(- b\mu + (a-1)\log(\mu) + a\log(b) - \log(\Gamma(a)))d\mu\\
+    = \exp( a\log(b) - \log(\Gamma(a))) \int \exp(-\mu(b + x_1) + a\log(\mu))d\mu\\
+    = \exp( a\log(b) - \log(\Gamma(a))) \int \exp(-\mu(b + x_1) + a\log(\mu))d\mu\\
+    = \frac{b^a}{\Gamma(a)} \int_0^\infty \mu^a \exp(-\mu(b + x_1)) d\mu\\
+    = \frac{b^a}{\Gamma(a)} \frac{\Gamma(a+1)}{(x_1 + b)^{a+1}}\\
+    = \frac{b^a a}{(x_1 + b)^{a+1}}
+\end{align*}
+\subproblem 
+\begin{align*}
+    P(x_{n+1} \g x_{1:n}, a, b) = \frac{(b + \sum_{i=1}^n x_i)^{a+n}}{\Gamma(a+n)} \int \mu^{a+n} \exp(-\mu(x_{n+1} + b + \sum_{i=1}^n x_i))d\mu\\
+    = \frac{(b + \sum_{i=1}^n x_i)^{a+n}}{\Gamma(a+n)} \frac{\Gamma(a+n+1)}{(x_{n+1} + b + \sum_{i=1}^n x_i)^{a+n+1}}\\
+    = \frac{(b + \sum_{i=1}^n x_i)^{a+n} (a+n)}{(x_{n+1} + b + \sum_{i=1}^n x_i)^{a+n+1}}
 \end{align*}
 \problem 
 \subproblem 
 \begin{align*}
-    \frac{1}{2}\int(\sqrt{p}-\sqrt{q})^2 = \frac{1}{2}\int p - 2\sqrt{pq} + q = \frac{1}{2} - \int \sqrt{pq} + \frac{1}{2} = 1 - \int \sqrt{pq}
-\end{align*}
-\subproblem 
-\begin{align*}
-    -2\log \int p^{.5}q^{.5} = -2 \log (1-H^2(P,Q)) \geq H^2(P,Q)
-\end{align*}
-since $\log(x) \leq x-1$ for $x \geq 0$.
-\subproblem
-\begin{align*}
-    \int \sqrt{p,q} \geq \int \sqrt{\min(p,q)^2} = \int \min(p,q)\\
-    \implies 1 - \int \sqrt{pq} \leq 1 - \int \min(p,q) = \text{TV}(P,Q)
+    P(\mu \g x,a,b) \propto \frac{\mu^x}{x!}\exp(-\mu)\exp(a\log(b) + (a-1)\log(\mu) - b\mu - \log(\Gamma(a)))\\
+    \propto \mu^{x + a -1} \exp(-\mu(b + 1))\\
+    P(\mu \g x,a,b) = \frac{\mu^{x + a -1} \exp(-\mu(b + 1))(b+1)^{a+x}}{\Gamma(x + a)}
 \end{align*}
 \subproblem
 \begin{align*}
-    \text{TV}(P,Q) = \frac{1}{2} \int \abs{p-q} = \frac{1}{2} \int \abs{\sqrt{p}-\sqrt{q}}\abs{\sqrt{p}+\sqrt{q}} &\leq \frac{1}{2} \sqrt{\int (\sqrt{p}-\sqrt{q})^2 \int (\sqrt{p}+\sqrt{q})^2}\\
-    &=\frac{1}{2}H(P,Q)\sqrt{2 + (1-H^2(P,Q))}\\
-    &\leq \sqrt{2} H(P,Q)
+    \frac{\mu^x}{x!}\exp(-\mu) = \frac{1}{x!}\exp(\log(\mu)x - \mu)\\
+    h(x) = \frac{1}{x!}\\
+    t(x) = x\\
+    \eta = \log(\mu)\\
+    a(\eta) = \exp(\eta)\\
 \end{align*}
-\subproblem 
 \begin{align*}
-    H^2(P^n,Q^n) = \frac{1}{2}\int(\sqrt{p^n}-\sqrt{q^n})^2 = \frac{1}{2}\int p^n - 2\sqrt{p^nq^n} + q^n &= 1 - \int \sqrt{p^nq^n}\\
-    &= 1-(1-H^2(P,Q))^n
-\end{align*}
-because we can factor the densities.
-\problem 
-\subproblem 
-\begin{align*}
-    D_{1/2}(P,Q) = -2\log \int p^{.5}q^{.5} = -2 \log \int (q/p)^{.5} dP \leq \int p\log(p/q) = D(P\vert\vert Q)
+    \frac{\Gamma(x + r)}{x! \Gamma(r)}(1-p)^r p^x = \frac{\Gamma(x + r)}{x! \Gamma(r)}\exp(\log(p)x + r\log(1-p))\\
+    h(x) = \frac{\Gamma(x + r)}{x! \Gamma(r)}\\
+    t(x) = x\\
+    \eta = \log(p)\\
+    a(\eta) = -r\log(1-\exp(\eta))
 \end{align*}
 \subproblem
 \begin{align*}
-    D(P\vert\vert Q) = \int p\log(p/q) \leq \log \int p^2 q^{-1} =D_2(P,Q)
-\end{align*}
-\subproblem 
-\begin{align*}
-    D_2(P,Q) =\log \int p^2 q^{-1} = \log(1 + \chi^2(P,Q)) \leq \chi^2(P,Q)
-\end{align*}
-\problem 
-\begin{align*}
-    \sup_{\theta\in\Theta}\abs{\frac{1}{n}\sum_{i=1}^{n}\log p_\theta(X_i)-\int p_{\theta^\star}\log p_\theta} \leq \sum_{k=1}^{K}\abs{\frac{1}{n}\sum_{i=1}^{n}\log p_{\theta_k}(X_i)-\int p_{\theta^\star}\log p_{\theta_k}} \rightarrow_{p_{\theta^\star}^n} 0
-\end{align*}
-because we can apply LLN for each point in $\Theta$
-\problem 
-\problem 
-\subproblem
-\begin{align*}
-    M_n(\theta^\star + t) &= M(\theta^\star + t) + \frac{1}{\sqrt{n}}\nu_n m(x, \theta^\star + t)\\
-    &= M(\theta^\star) - \frac{1}{2}J_{\theta^\star}t^2 + o(t^2) + \frac{1}{\sqrt{n}}\nu_n\left[m(x,\theta^\star) + t\Delta_{\theta^\star}(x) + \abs{t}r(x,t)\right]\\
-    &= M_n(\theta^\star) + \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) - \frac{t^2}{2}J_{\theta^\star} + \frac{\abs{t}}{\sqrt{n}}\nu_n r(x,t) + o(t^2)
-\end{align*}
-\subproblem
-Let $t = \hat{\theta} - \theta^\star$
-\begin{align*}
-    M_n(\theta^\star + t) \geq M_n(\theta^\star)\\
-    M_n(\theta^\star) + \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) - \frac{t^2}{2}J_{\theta^\star} + \frac{\abs{t}}{\sqrt{n}}\nu_n r(x,t) + o(t^2) \geq M_n(\theta^\star)
-\end{align*}
-\begin{align*}
-    \frac{t^2}{2}J_{\theta^\star} - o(t^2) &\leq \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) + \frac{\abs{t}}{\sqrt{n}}\nu_n r(x,t)\\
-    &\leq O_p(\frac{\abs{t}}{\sqrt{n}}) + \frac{\abs{t}}{\sqrt{n}}o_p(1+\sqrt{n}\abs{t})
-\end{align*}
-\begin{align*}
-    \frac{t^2}{2}J_{\theta^\star} - o_p(t^2) = O_p(\frac{\abs{t}}{\sqrt{n}})\\
-    (\frac{1}{2}J_{\theta^\star} - o_p(1))t^2 = O_p(\frac{\abs{t}}{\sqrt{n}})\\
-    (\frac{1}{2}J_{\theta^\star} - o_p(1))\abs{t} = O_p(\frac{1}{\sqrt{n}})\\
-    \abs{\hat{\theta} - \theta^\star} = O_p(\frac{1}{\sqrt{n}})
-\end{align*}
-\subproblem
-Let $t = \hat{\theta} - \theta^\star = O_p(\frac{1}{\sqrt{n}})$
-\begin{align*}
-    M_n(\theta^\star + t) &= M_n(\theta^\star) + \frac{t}{\sqrt{n}}\nu_n\Delta_{\theta^\star}(x) - \frac{t^2}{2}J_{\theta^\star} + o_p(\frac{1}{n})\\
-    &= M_n(\theta^\star)  - \frac{1}{2}J_{\theta^\star}(t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})^2 + \frac{1}{2n}\frac{(\nu_n\Delta_{\theta^\star}(x))^2}{J_{\theta^\star}} + o_p(\frac{1}{n})
-\end{align*}
-\begin{align*}
-    M_n(\theta^\star + t) \geq M_n(\theta^\star + \frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})\\
-    M_n(\theta^\star)  - \frac{1}{2}J_{\theta^\star}(t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})^2 + \frac{1}{2n}\frac{(\nu_n\Delta_{\theta^\star}(x))^2}{J_{\theta^\star}} + o_p(\frac{1}{n}) \geq M_n(\theta^\star) + \frac{1}{2n}\frac{(\nu_n\Delta_{\theta^\star}(x))^2}{J_{\theta^\star}} + o_p(\frac{1}{n})\\
-    \frac{1}{2}J_{\theta^\star}(t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}})^2 = o_p(\frac{1}{n})\\
-    \abs{t-\frac{1}{\sqrt{n}}\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}}} = o_p(\frac{1}{\sqrt{n}})\\
-    \abs{\sqrt{n}t-\frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}}} = o_p(1)\\
-    \sqrt{n}(\hat{\theta} - \theta^\star) = \frac{\nu_n\Delta_{\theta^\star}(x)}{J_{\theta^\star}} + o_p(1)\\
-    \rightsquigarrow N(0, \frac{E_{\theta^\star}\Delta_{\theta^\star}(x)^2}{J_{\theta^\star}^2})
+    \sum_{x \in \NN} \frac{1}{x!}\exp(\log(\mu_1)x - \mu_1) \log\left(\frac{\frac{1}{x!}\exp(\log(\mu_1)x - \mu_1)}{\frac{1}{x!}\exp(\log(\mu_2)x - \mu_2)}\right)\\
+    =\sum_{x \in \NN} \frac{1}{x!}\exp(\log(\mu_1)x - \mu_1)(x\log(\frac{\mu_1}{\mu_2}) - \mu_1 + \mu_2)\\
+    = \mu_1\log(\frac{\mu_1}{\mu_2}) - \mu_1 + \mu_2\\
 \end{align*}
 \subproblem
 \begin{align*}
-    \frac{E_{\theta^\star}\Delta_{\theta^\star}(x)^2}{J_{\theta^\star}^2} I_{\theta^\star} =
-    E_{\theta^\star}  \frac{\Delta_{\theta^\star}(x)^2}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}^2} E_{\theta^\star} S_{\theta^\star}^2 \\
-    \geq (\int \frac{\Delta_{\theta^\star}(x)}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}}S_{\theta^\star} dP)^2\\
-    =(\int \frac{\Delta_{\theta^\star}(x)}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}} \frac{\partial}{\partial \theta}\log p_\theta dP)^2\\
-    =(\int \frac{\Delta_{\theta^\star}(x)}{\frac{\partial^2}{\partial\theta^2}m(X,\theta)\Bigr|_{\theta = \theta^\star}} \frac{\partial}{\partial \theta} p_\theta )^2\\
-    =1
+H(Pois(y) \g Gam(a,b))
+    =\int_{0}^{\infty} -\sum_{x}^{\infty} \frac{y^x}{x!}e^{-y}\log(\frac{y^x}{x!}e^{-y})  d\text{Gam(a,b)}\\
+    =\int_{0}^{\infty} -\sum_{x}^{\infty} \frac{y^x}{x!}e^{-y}\log(\frac{y^x}{x!}e^{-y})  d\text{Gam(a,b)}\\
+    \leq  -\sum_{x}^{\infty} NB(x; a, \frac{1}{1+b}) \log(NB(x; a, \frac{1}{1+b}))\\
+    = H(NB(x; a, \frac{1}{1+b}))
 \end{align*}
-\problem 
-\begin{align*}
-    F_{X_{(n)}}(x) = \prod_{i=1}^{n}F_X(x) = F_X(x)^n = (\frac{x}{\theta})^n\\
-    f_{X_{(n)}}(x) = \frac{d}{dx}F_{X_{(n)}}(x) = \frac{n}{\theta}(\frac{x}{\theta})^{n-1}\\
-    M \defeq n(X_{(n)}-\theta)\\
-    f_M(m) = \frac{(\frac{m}{n}+\theta)^{n-1}}{\theta^n} = \frac{1}{\theta}(\frac{m}{n\theta}+1)^{n-1}\\
-    \lim_{n\rightarrow\infty}f_M(m) = \frac{1}{\theta}e^{\frac{m}{\theta}}
-\end{align*}
-which is exponential distribution as $m < 0$.
+Where we use Jensen's inequality on $f(t) = t\log(t)$.
 
+\problem 
+\subproblem 
+\begin{align*}
+    \argmax_k H(Z) - H(Z\g Y_k) &= \argmax_k H(Y_k) - H(Y_k \g Z)\\
+    &= \argmax_k H(Y_k)\\
+    &= \argmax_k H_2(\pi_k)\\
+    &= \argmax_k \pi_k
+\end{align*}
+This works trivially when $K\leq2$ although the $K=2$ case is more of an arbitrary choice. Otherwise, the last line follows because the binary entropy is symmetrical about $0.5$ so we have the cases 1) where all $\pi_k < 0.5$ then the maximum is closest to 0.5 and 2) where there is one $\pi_j > 0.5$ and that is closest to 0.5 because every other $\pi_k$ is less than $1-\pi_j$.
+\subproblem
+\begin{align*}
+    \argmax_k H(Z) - H(Z\g Y_k) = \argmax_k H(Y_k) - H(Y_k \g Z)\\
+    = \argmax_k \left[-\pi_k q_k \log(\pi_k q_k) - (1-\pi_k q_k)\log(1-\pi_k q_k) \right] + 
+    \pi_k(q_k \log(q_k) + (1-q_k)\log(1-q_k))\\
+    = \argmax_k H_2(\pi_k q_k) + \pi_k H_2(q_k)\\
+\end{align*}
+\subproblem
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{lllll}
+    pi            & 0.75       & 0.125      & 0.06125    & 0.06125    \\
+    q             & 0.25       & 0.5        & 0.75       & 0.5        \\
+                  &            &            &            &            \\
+    H(Y)          & 0.69621226 & 0.33729007 & 0.26888241 & 0.19751658 \\
+                  & 0.81127812 & 1          & 0.81127812 & 1          \\
+    $H(Y|Z)$        & 0.60845859 & 0.125      & 0.04969079 & 0.06125    \\
+                  &            &            &            &            \\
+    H(Y) - $H(Y|Z)$ & 0.08775367 & 0.21229007 & 0.21919163 & 0.13626658
+    \end{tabular}
+
+    \end{table}
+    $k^\star = 2$. It is not what I expected because of the low pi. But it makes sense in that there is more information in finding the submarine in a cell that you didn't expect it from. The relationshiop with SEPs and optimal search is that higher SEP means that the search is more likely to be successful so you would reduce your uncertainty by searching in the cells with higher SEP.
 \end{document}

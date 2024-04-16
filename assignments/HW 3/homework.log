@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.15)  29 FEB 2024 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.15)  15 APR 2024 13:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/dxli2/Library/CloudStorage/GoogleDrive-danielxli@uchicago.edu/我的云端硬盘/winter 2024/Math STat/HW 8/homework.tex"
-(/Users/dxli2/Library/CloudStorage/GoogleDrive-danielxli@uchicago.edu/我的云端硬盘/winter 2024/Math STat/HW 8/homework.tex
+**"/Users/dxli2/Library/CloudStorage/GoogleDrive-danielxli@uchicago.edu/我的云端硬盘/Spring 2024/stat_348_2024/assignments/HW 3/homework.tex"
+(/Users/dxli2/Library/CloudStorage/GoogleDrive-danielxli@uchicago.edu/我的云端硬盘/Spring 2024/stat_348_2024/assignments/HW 3/homework.tex
 LaTeX2e <2022-06-01> pre-release-0 (develop 2022-6-15 branch)
 L3 programming layer <2022-06-02> (./homework.cls
 Document Class: homework 2018/03/12 Sebastiaans Homework package
@@ -539,8 +539,8 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 29--35
-
+Overfull \hbox (24.53859pt too wide) detected at line 48
+[]
  []
 
 [1
@@ -550,18 +550,18 @@ Package rerunfilecheck Info: File `homework.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 13097 strings out of 478040
- 204913 string characters out of 5839127
- 536536 words of memory out of 5000000
- 31343 multiletter control sequences out of 15000+600000
- 473083 words of font info for 43 fonts, out of 8000000 for 9000
+ 13092 strings out of 478040
+ 204907 string characters out of 5839127
+ 535536 words of memory out of 5000000
+ 31340 multiletter control sequences out of 15000+600000
+ 472178 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,90p,904b,444s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on homework.pdf (4 pages, 145118 bytes).
+ 84i,14n,90p,920b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on homework.pdf (4 pages, 109340 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  5 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
