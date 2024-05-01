@@ -95,7 +95,7 @@ from an Elementary Point of View](https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/A
 - Reading / resources:
 	- [Chap 3](https://people.cs.pitt.edu/~milos/courses/cs3750-Spring2020/Readings/Graphical_models/chapter3.pdf) and [chap 4](https://people.cs.pitt.edu/~milos/courses/cs3750-Spring2020/Readings/Graphical_models/chapter4.pdf) of Michael Jordan's lecture notes
 	- David Blei's [lecture notes](https://www.cs.columbia.edu/~blei/fogm/2016F/doc/inference.pdf) on inference in PGMs
-	- Yedidia et al. (2001) ["Bethe free energy, Kikuchi approximations, and belief propagation algorithms"]()
+	- Yedidia et al. (2001) ["Bethe free energy, Kikuchi approximations, and belief propagation algorithms"](https://www.merl.com/publications/docs/TR2001-16.pdf)
 - Lecture materials: 
     - [iPad notes](https://github.com/aschein/stat_348_2024/blob/main/lecture_materials/ipad_notes/lecture_8_ipad.pdf)
     
@@ -109,5 +109,24 @@ from an Elementary Point of View](https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/A
 ### Lecture 10 (April 18): Learning and inference in hidden Markov models (HMMs)
 - Lecture materials: 
     - [iPad notes](https://github.com/aschein/stat_348_2024/blob/main/lecture_materials/ipad_notes/lecture_10_ipad.pdf)
+    
+### Lecture 11 (April 23): Bayesian mixture models and EM
+- Reading / resources:
+   - Chap 9 of Bishop (2006) [_Pattern Recognition and Machine Learning_](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) on mixtures and EM
+    - Scott Linderman's [slides](https://github.com/slinderman/stats305c/blob/spring2023/slides/lecture07-mixtures.pdf) on Bayesian mixtures
+    - David Blei's [lecture notes](http://www.cs.columbia.edu/~blei/fogm/2016F/doc/gibbs.pdf) on Bayesian mixtures
+- Lecture materials: 
+    - [iPad notes](https://github.com/aschein/stat_348_2024/blob/main/lecture_materials/ipad_notes/lecture_11_ipad.pdf)
+    
+### Lecture 12 (April 25): Gibbs sampling and MCMC
+- Reading / resources:
+    - Chap 11.1.6-11.3 of Bishop (2006) [_Pattern Recognition and Machine Learning_](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+    - David Blei's [lecture notes](http://www.cs.columbia.edu/~blei/fogm/2016F/doc/gibbs.pdf) on Bayesian mixtures and Gibbs sampling
+    - Matthew Stephen's [lecture notes](https://stephens999.github.io/fiveMinuteStats/gibbs1.html) on Gibbs sampling
+    - Scott Linderman's [slides](https://github.com/slinderman/stats305c/blob/spring2023/slides/lecture04_mcmc.pdf) on MCMC
+    - Geweke (2004): ["Getting it Right: Joint Distribution Tests of Posterior Simulators"](http://qed.econ.queensu.ca/pub/faculty/ferrall/quant/papers/04_04_29_geweke.pdf)
+    - Roger Grosse's [blogpost](https://lips.cs.princeton.edu/testing-mcmc-code-part-2-integration-tests/) on Geweke testing
+- Lecture materials: 
+    - [iPad notes](https://github.com/aschein/stat_348_2024/blob/main/lecture_materials/ipad_notes/lecture_12_ipad.pdf)
    
 
