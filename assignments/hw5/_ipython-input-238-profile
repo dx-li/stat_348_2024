@@ -1,0 +1,33 @@
+
+# You can/should use small n, D, K for the purposes of testing to speed up the code
+# Theoretically, your code should pass the Geweke test for any setting of hyperparams.
+n = 10
+D = 4
+K = 3
+hyperparams = {'a0': 2.0,
+               'b0': 2.0,
+               'e0': 2.0,
+               'f0': 1.0,
+               'alpha_K': np.ones(2)}
+
+forward_samples, backward_samples = geweke_test(n=n, 
+                                                D=D, 
+                                                hyperparams=hyperparams, 
+                                                n_samples=100000, 
+                                                n_burnin=10000, 
+                                                n_thin=5)
+
+# Compare the arithmetic mean of the lambd_KD parameters across samples
+arr1 = [state['lambd_KD'].mean() for state in forward_samples]
+arr2 = [state['lambd_KD'].mean() for state in backward_samples]
+pp_plot(arr1, arr2, 'Geweke test for $E[\lambda_{k,d}]$')
+
+# Compare the geometric mean of the omega_KD parameters across samples
+arr1 = [np.exp(np.mean(np.log(state['omega_KD']))) for state in forward_samples]
+arr2 = [np.exp(np.mean(np.log(state['omega_KD']))) for state in backward_samples]
+pp_plot(arr1, arr2, 'Geweke test for $G[\omega_{k,d}]$')
+
+# Compare the entropy of the pi vector across samples
+arr1 = [st.entropy(state['pi_K']) for state in forward_samples]
+arr2 = [st.entropy(state['pi_K']) for state in backward_samples]
+pp_plot(arr1, arr2, 'Geweke test for $H[\pi]$')
